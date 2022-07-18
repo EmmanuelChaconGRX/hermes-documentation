@@ -14,14 +14,17 @@ A notification filter combines a valid field with a comparison operator and a va
 For any given notification schedule, there must be a notification filter value for each valid field.  This is because the filtering and column inclusion in the alert are not currently separate from each other.  However, the user does not need to explicitly create an empty filter for each column.  Instead, the system silently adds passthru filters, where the comparison operator is ??.  This tells the system to join the event details table to pull that information, but not to try to perform any equivalence tests against it.   For this reason, you’ll see something like the screenshot below in the notification_filters table. 
 
 ![](/img/others/01.png)
+<img :src="$withBase('/img/others/01.png')">
 
 The user has only created a filter that valid  11  is equal to the value “AS2A”.  The remaining fields are automatically turned into passthru filters.  If the passthru filters were not added, then the event query would only return record sets with valid field 11.  This is an area for potential improvement.
 
 ![](/img/others/02.png)
+<img :src="$withBase('/img/others/02.png')">
 
 Here’s the main query in **getDetailsForCriteriaFilter**.  The :type property is populated by the source type of the given notification schedule.  The :partner, likewise is a property on the notification schedule.  The $excludeWhere clause is either left blank when the notification does not exclude previously alerted events, or conversely, looks like the screenshot below, where $nsId is the id of the notification schedule.  So, while a single event could be picked up by multiple different notification schedules that just happen to have overlapping interests, the $excludeWhere clause only deals with situations where you don’t want the same event alerted multiple times from the same notification schedule.
 
 ![](/img/others/03.png)
+<img :src="$withBase('/img/others/03.png')">
 
 For example, you could have a notification schedule that reports on 850s, and a separate one that reports on ALL documents.  Between these two alerts, you will see duplicated data, even if each one is set to exclude previous results.  However, with exclude previous results enabled, you should never see duplicated results within each individual notification schedule.
 
@@ -79,6 +82,7 @@ ORDER BY e.id
 Check out the legend and you’ll see that the big JOIN mess in green is all the **$filterJoins** clause.  The last few of the joins are there to include the columns in the output, and since the query is created dynamically, we have to have some clause inside the last parenthesis.  In the case of fields that we’re not filtering on, we just use a static **TRUE** statement.  Have a look at the huge list of OR clauses.  Ors are achieved in the UI by setting the same filter = to multiple values as separate filters.  See the screenshot below.  
 
 ![](/img/others/04.png)
+<img :src="$withBase('/img/others/04.png')">
 
 We have multiple instances of DataChannel = something.  Internally, this is interpreted as an OR.  In fact, any combination of comparisons against the same field is joined with an OR.  This might be insufficient for some advanced querying if you want to check for this field > x AND < y, so this is an area for potential improvement.
 
