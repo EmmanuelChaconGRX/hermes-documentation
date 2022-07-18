@@ -5,6 +5,7 @@ To configure notifications in Hermes it is necessary to log in to WebEDI Admin 3
 * <https://admin-prod.datatranswebedi.com/login>
 
 ![](/img/steps/webediadmin.png)
+ <img :src="$withBase('/img/steps/webediadmin.png')">
 
 
 ## 2. Hermes Notifications
