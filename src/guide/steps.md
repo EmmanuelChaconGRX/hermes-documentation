@@ -77,6 +77,8 @@ A modal opens in which we select the type of alert to create.
 
 For this example we select a _Delta_ type alert.
 
+_Delta_ by default will send notifications of documents processed `successfully` and documents processed with `errors`.
+
 ![](/img/steps/alert_type.png)
  <img :src="$withBase('/img/steps/alert_type.png')">
 
@@ -130,3 +132,38 @@ Returning to the main screen we verify that a new alert has been added.
  ![](/img/steps/new_alert.png)
  <img :src="$withBase('/img/steps/new_alert.png')">
 
+## 7. Updates
+Below are some updates made.
+### 7.1 Delta
+_2022-08-30_ "Delta", Delta will be able to send 3 types of notifications:
+
+_1) Only documents processed successfully._
+
+_2) Only documents processed with errors_
+
+_3) Both (default)_
+
+
+The configuration must be done through the filters as detailed below:
+
+**1) Only successfully processed documents.**
+
+In order for Delta to only send notifications for **successfully** processed documents, the following filter must be added:
+
+**Severity = 6**
+
+![](/img/others/update1.png)
+ <img :src="$withBase('/img/others/update1.png')">
+
+**2) Only documents processed with errors.**
+
+In order for Delta to only send notifications for documents processed with **errors**, the following filter must be added:
+
+**Severity = 3**
+
+![](/img/others/update2.png)
+ <img :src="$withBase('/img/others/update2.png')">
+
+**3) Both (Default)**
+
+In order for delta to send notifications of documents processed successfully and documents processed with errors, no additional filters need to be added as Delta will send these two types of notification by default. 
