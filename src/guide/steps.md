@@ -122,6 +122,9 @@ One or more filters can be added for each alert. For example, we will only searc
  ![](/img/steps/add_filter.png)
  <img :src="$withBase('/img/steps/add_filter.png')">
 
+  ![](/img/steps/add_filter_save.png)
+ <img :src="$withBase('/img/steps/add_filter_save.png')">
+
 We will verify that the new filter was added. Then we press the _Submit_ button to save the changes
 
  ![](/img/steps/save_changes.png)
@@ -167,3 +170,11 @@ In order for Delta to only send notifications for documents processed with **err
 **3) Both (Default)**
 
 In order for delta to send notifications of documents processed successfully and documents processed with errors, no additional filters need to be added as Delta will send these two types of notification by default. 
+
+### 7.2 DataChannel filter
+_2022-12-13_ "DataChannel-filter", A dropdown menu with all available "Data Channels" has been implemented. _[channel name](data channel id)_.
+
+In this way the user will be able to select an available data channel without having to add it manually.
+
+![](/img/others/datachannel_update.png)
+ <img :src="$withBase('/img/others/datachannel_update.png')">
