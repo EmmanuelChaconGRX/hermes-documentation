@@ -48,7 +48,7 @@ We select the Commercial Partner that we want to associate to the channel "FWD -
  <img :src="$withBase('/img/others/noti.png')">
 
 
-## 3. Main Screen
+## 4. Main Screen
 The default screen for Hermes is a list of Partners.  From here, you choose the partner for which you want to manage alerts.
 
 ![](/img/steps/main_screen.png)
